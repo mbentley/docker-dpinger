@@ -1,6 +1,5 @@
 # disposable build image
 FROM alpine:latest as build
-MAINTAINER Matt Bentley <mbentley@mbentley.net>
 
 RUN apk --no-cache add clang gcc git libc-dev make &&\
   cd tmp &&\
@@ -10,6 +9,8 @@ RUN apk --no-cache add clang gcc git libc-dev make &&\
 
 # end result
 FROM alpine:latest
+MAINTAINER Matt Bentley <mbentley@mbentley.net>
+
 COPY --from=build /tmp/dpinger/dpinger /usr/local/bin/dpinger
 
 ENTRYPOINT ["/usr/local/bin/dpinger","-f"]
