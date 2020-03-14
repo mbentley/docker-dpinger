@@ -12,4 +12,4 @@ RUN apk --no-cache add clang gcc git libc-dev make &&\
 FROM alpine:latest
 COPY --from=build /tmp/dpinger/dpinger /usr/local/bin/dpinger
 
-ENTRYPOINT ["/usr/local/bin/dpinger"]
+ENTRYPOINT ["/usr/local/bin/dpinger","-f"]
