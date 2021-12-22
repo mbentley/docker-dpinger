@@ -1,5 +1,5 @@
 # disposable build image
-FROM alpine:latest as build
+FROM alpine:latest AS build
 
 RUN apk --no-cache add clang gcc git libc-dev make &&\
   cd tmp &&\
