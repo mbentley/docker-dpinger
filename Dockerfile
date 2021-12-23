@@ -1,5 +1,6 @@
 # disposable build image
-FROM alpine:latest AS build
+# rebased/repackaged base image that only updates existing packages
+FROM mbentley/alpine:latest AS build
 
 RUN apk --no-cache add clang gcc git libc-dev make &&\
   cd tmp &&\
@@ -8,7 +9,8 @@ RUN apk --no-cache add clang gcc git libc-dev make &&\
   make all
 
 # end result
-FROM alpine:latest
+# rebased/repackaged base image that only updates existing packages
+FROM mbentley/alpine:latest
 MAINTAINER Matt Bentley <mbentley@mbentley.net>
 
 COPY --from=build /tmp/dpinger/dpinger /usr/local/bin/dpinger
