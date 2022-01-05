@@ -11,7 +11,7 @@ RUN apk --no-cache add clang gcc git libc-dev make &&\
 # end result
 # rebased/repackaged base image that only updates existing packages
 FROM mbentley/alpine:latest
-MAINTAINER Matt Bentley <mbentley@mbentley.net>
+LABEL maintainer="Matt Bentley <mbentley@mbentley.net>"
 
 COPY --from=build /tmp/dpinger/dpinger /usr/local/bin/dpinger
 
